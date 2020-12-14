@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = 500;
 canvas.height = 500;
 
-const iterations = 5;
+const iterations = 8;
 let trianglesArray = [];
 
 class Triangle {
@@ -14,7 +14,8 @@ class Triangle {
     this.pointA = [x, y - this.height];
     this.pointB = [x + (this.length / 2), y];
     this.pointC = [x - (this.length / 2), y];
-    this.color = 'white';
+    this.hue = x / canvas.width * 360 - 100;
+    this.color = `hsla(${this.hue}, 100%, 50%, 1)`;
   }
   divide() {
     trianglesArray.push(new Triangle(this.length / 2, this.seed[0], this.seed[1] - this.height / 2));
@@ -48,7 +49,7 @@ function splitTriangles() {
 }
 
 function init() {
-  trianglesArray.push(new Triangle(400, canvas.width / 2, 423));
+  trianglesArray.push(new Triangle(450, canvas.width / 2, 435));
   splitTriangles();
   drawTriangles();
 }
