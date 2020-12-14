@@ -1,0 +1,1 @@
+Draws a Sierpinski triangle.
